@@ -36,6 +36,15 @@
 
 
 
+
+
+
+
+#define NO_MUSIC_MODE
+#undef LOCKING_SUPPORT_ENABLE
+#undef LOCKING_RESYNC_ENABLE
+
+
 // #ifdef RGB_MATRIX_ENABLE
 
 // #define RGB_DISABLE_WHEN_USB_SUSPENDED     // turn off effects when suspended
