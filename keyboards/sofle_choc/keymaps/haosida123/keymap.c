@@ -19,7 +19,7 @@ enum sofle_layers {
     _QWERTY,
     _LOWER,
     _RAISE,
-    _ADJUST,
+    // _ADJUST,
 };
 
 enum custom_keycodes {
@@ -111,152 +111,152 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *            |      |      |      |      |/       /         \      \ |      |      |      |      |
  *            `----------------------------------'           '------''---------------------------'
  */
-[_ADJUST] = LAYOUT(
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    QK_BOOT, RGB_SPI, RGB_VAI, RGB_SAI, RGB_HUI, RGB_MODE_FORWARD,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    XXXXXXX, RGB_SPD, RGB_VAD, RGB_SAD, RGB_HUD, RGB_MODE_REVERSE,                       XXXXXXX, KC_VOLD, KC_MUTE, KC_VOLU, XXXXXXX, XXXXXXX,
-    CG_TOGG, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     XXXXXXX, XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX, XXXXXXX,
-                      _______, _______, _______, _______, _______,     _______, _______, _______, _______, _______
-    )
+// [_ADJUST] = LAYOUT(
+//     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+//     QK_BOOT, RGB_SPI, RGB_VAI, RGB_SAI, RGB_HUI, RGB_MODE_FORWARD,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+//     XXXXXXX, RGB_SPD, RGB_VAD, RGB_SAD, RGB_HUD, RGB_MODE_REVERSE,                       XXXXXXX, KC_VOLD, KC_MUTE, KC_VOLU, XXXXXXX, XXXXXXX,
+//     CG_TOGG, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     XXXXXXX, XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX, XXXXXXX,
+//                       _______, _______, _______, _______, _______,     _______, _______, _______, _______, _______
+// )
 };
 
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case KC_PRVWD:
-            if (record->event.pressed) {
-                if (keymap_config.swap_lctl_lgui) {
-                    register_mods(mod_config(MOD_LALT));
-                    register_code(KC_LEFT);
-                } else {
-                    register_mods(mod_config(MOD_LCTL));
-                    register_code(KC_LEFT);
-                }
-            } else {
-                if (keymap_config.swap_lctl_lgui) {
-                    unregister_mods(mod_config(MOD_LALT));
-                    unregister_code(KC_LEFT);
-                } else {
-                    unregister_mods(mod_config(MOD_LCTL));
-                    unregister_code(KC_LEFT);
-                }
-            }
-            return false;
-        case KC_NXTWD:
-             if (record->event.pressed) {
-                if (keymap_config.swap_lctl_lgui) {
-                    register_mods(mod_config(MOD_LALT));
-                    register_code(KC_RIGHT);
-                } else {
-                    register_mods(mod_config(MOD_LCTL));
-                    register_code(KC_RIGHT);
-                }
-            } else {
-                if (keymap_config.swap_lctl_lgui) {
-                    unregister_mods(mod_config(MOD_LALT));
-                    unregister_code(KC_RIGHT);
-                } else {
-                    unregister_mods(mod_config(MOD_LCTL));
-                    unregister_code(KC_RIGHT);
-                }
-            }
-            return false;
-        case KC_LSTRT:
-            if (record->event.pressed) {
-                if (keymap_config.swap_lctl_lgui) {
-                     // CMD-arrow on Mac, but we have CTL and GUI swapped
-                    register_mods(mod_config(MOD_LCTL));
-                    register_code(KC_LEFT);
-                } else {
-                    register_code(KC_HOME);
-                }
-            } else {
-                if (keymap_config.swap_lctl_lgui) {
-                    unregister_mods(mod_config(MOD_LCTL));
-                    unregister_code(KC_LEFT);
-                } else {
-                    unregister_code(KC_HOME);
-                }
-            }
-            return false;
-        case KC_LEND:
-            if (record->event.pressed) {
-                if (keymap_config.swap_lctl_lgui) {
-                    // CMD-arrow on Mac, but we have CTL and GUI swapped
-                    register_mods(mod_config(MOD_LCTL));
-                    register_code(KC_RIGHT);
-                } else {
-                    register_code(KC_END);
-                }
-            } else {
-                if (keymap_config.swap_lctl_lgui) {
-                    unregister_mods(mod_config(MOD_LCTL));
-                    unregister_code(KC_RIGHT);
-                } else {
-                    unregister_code(KC_END);
-                }
-            }
-            return false;
-        case KC_DLINE:
-            if (record->event.pressed) {
-                register_mods(mod_config(MOD_LCTL));
-                register_code(KC_BSPC);
-            } else {
-                unregister_mods(mod_config(MOD_LCTL));
-                unregister_code(KC_BSPC);
-            }
-            return false;
-        case KC_COPY:
-            if (record->event.pressed) {
-                // CMD-c on Mac, but we have CTL and GUI swapped
-                register_mods(mod_config(MOD_LCTL));
-                register_code(KC_C);
-            } else {
-                unregister_mods(mod_config(MOD_LCTL));
-                unregister_code(KC_C);
-            }
-            return false;
-        case KC_PASTE:
-            if (record->event.pressed) {
-                // CMD-v on Mac, but we have CTL and GUI swapped
-                register_mods(mod_config(MOD_LCTL));
-                register_code(KC_V);
-            } else {
-                unregister_mods(mod_config(MOD_LCTL));
-                unregister_code(KC_V);
-            }
-            return false;
-        case KC_CUT:
-            if (record->event.pressed) {
-                // CMD-x on Mac, but we have CTL and GUI swapped
-                register_mods(mod_config(MOD_LCTL));
-                register_code(KC_X);
-            } else {
-                unregister_mods(mod_config(MOD_LCTL));
-                unregister_code(KC_X);
-            }
-            return false;
-            return false;
-        case KC_UNDO:
-            if (record->event.pressed) {
-                // CMD-z on Mac, but we have CTL and GUI swapped
-                register_mods(mod_config(MOD_LCTL));
-                register_code(KC_Z);
-            } else {
-                unregister_mods(mod_config(MOD_LCTL));
-                unregister_code(KC_Z);
-            }
-            return false;
-        default:
-            return true;
-    }
-}
+// bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+//     switch (keycode) {
+//         case KC_PRVWD:
+//             if (record->event.pressed) {
+//                 if (keymap_config.swap_lctl_lgui) {
+//                     register_mods(mod_config(MOD_LALT));
+//                     register_code(KC_LEFT);
+//                 } else {
+//                     register_mods(mod_config(MOD_LCTL));
+//                     register_code(KC_LEFT);
+//                 }
+//             } else {
+//                 if (keymap_config.swap_lctl_lgui) {
+//                     unregister_mods(mod_config(MOD_LALT));
+//                     unregister_code(KC_LEFT);
+//                 } else {
+//                     unregister_mods(mod_config(MOD_LCTL));
+//                     unregister_code(KC_LEFT);
+//                 }
+//             }
+//             return false;
+//         case KC_NXTWD:
+//              if (record->event.pressed) {
+//                 if (keymap_config.swap_lctl_lgui) {
+//                     register_mods(mod_config(MOD_LALT));
+//                     register_code(KC_RIGHT);
+//                 } else {
+//                     register_mods(mod_config(MOD_LCTL));
+//                     register_code(KC_RIGHT);
+//                 }
+//             } else {
+//                 if (keymap_config.swap_lctl_lgui) {
+//                     unregister_mods(mod_config(MOD_LALT));
+//                     unregister_code(KC_RIGHT);
+//                 } else {
+//                     unregister_mods(mod_config(MOD_LCTL));
+//                     unregister_code(KC_RIGHT);
+//                 }
+//             }
+//             return false;
+//         case KC_LSTRT:
+//             if (record->event.pressed) {
+//                 if (keymap_config.swap_lctl_lgui) {
+//                      // CMD-arrow on Mac, but we have CTL and GUI swapped
+//                     register_mods(mod_config(MOD_LCTL));
+//                     register_code(KC_LEFT);
+//                 } else {
+//                     register_code(KC_HOME);
+//                 }
+//             } else {
+//                 if (keymap_config.swap_lctl_lgui) {
+//                     unregister_mods(mod_config(MOD_LCTL));
+//                     unregister_code(KC_LEFT);
+//                 } else {
+//                     unregister_code(KC_HOME);
+//                 }
+//             }
+//             return false;
+//         case KC_LEND:
+//             if (record->event.pressed) {
+//                 if (keymap_config.swap_lctl_lgui) {
+//                     // CMD-arrow on Mac, but we have CTL and GUI swapped
+//                     register_mods(mod_config(MOD_LCTL));
+//                     register_code(KC_RIGHT);
+//                 } else {
+//                     register_code(KC_END);
+//                 }
+//             } else {
+//                 if (keymap_config.swap_lctl_lgui) {
+//                     unregister_mods(mod_config(MOD_LCTL));
+//                     unregister_code(KC_RIGHT);
+//                 } else {
+//                     unregister_code(KC_END);
+//                 }
+//             }
+//             return false;
+//         case KC_DLINE:
+//             if (record->event.pressed) {
+//                 register_mods(mod_config(MOD_LCTL));
+//                 register_code(KC_BSPC);
+//             } else {
+//                 unregister_mods(mod_config(MOD_LCTL));
+//                 unregister_code(KC_BSPC);
+//             }
+//             return false;
+//         case KC_COPY:
+//             if (record->event.pressed) {
+//                 // CMD-c on Mac, but we have CTL and GUI swapped
+//                 register_mods(mod_config(MOD_LCTL));
+//                 register_code(KC_C);
+//             } else {
+//                 unregister_mods(mod_config(MOD_LCTL));
+//                 unregister_code(KC_C);
+//             }
+//             return false;
+//         case KC_PASTE:
+//             if (record->event.pressed) {
+//                 // CMD-v on Mac, but we have CTL and GUI swapped
+//                 register_mods(mod_config(MOD_LCTL));
+//                 register_code(KC_V);
+//             } else {
+//                 unregister_mods(mod_config(MOD_LCTL));
+//                 unregister_code(KC_V);
+//             }
+//             return false;
+//         case KC_CUT:
+//             if (record->event.pressed) {
+//                 // CMD-x on Mac, but we have CTL and GUI swapped
+//                 register_mods(mod_config(MOD_LCTL));
+//                 register_code(KC_X);
+//             } else {
+//                 unregister_mods(mod_config(MOD_LCTL));
+//                 unregister_code(KC_X);
+//             }
+//             return false;
+//             return false;
+//         case KC_UNDO:
+//             if (record->event.pressed) {
+//                 // CMD-z on Mac, but we have CTL and GUI swapped
+//                 register_mods(mod_config(MOD_LCTL));
+//                 register_code(KC_Z);
+//             } else {
+//                 unregister_mods(mod_config(MOD_LCTL));
+//                 unregister_code(KC_Z);
+//             }
+//             return false;
+//         default:
+//             return true;
+//     }
+// }
 
 #if defined(ENCODER_MAP_ENABLE)
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
-    [_QWERTY] =   { ENCODER_CCW_CW(KC_PGUP, KC_PGDN), ENCODER_CCW_CW(KC_VOLD, KC_VOLU)  },
+    [_QWERTY] = { ENCODER_CCW_CW(KC_PGUP, KC_PGDN),   ENCODER_CCW_CW(KC_VOLD, KC_VOLU)  },
     [_LOWER] =  { ENCODER_CCW_CW(RGB_HUD, RGB_HUI),   ENCODER_CCW_CW(RGB_SAD, RGB_SAI)  },
     [_RAISE] =  { ENCODER_CCW_CW(RGB_VAD, RGB_VAI),   ENCODER_CCW_CW(RGB_SPD, RGB_SPI)  },
-    [_ADJUST] = { ENCODER_CCW_CW(RGB_RMOD, RGB_MOD),  ENCODER_CCW_CW(KC_RIGHT, KC_LEFT) },
+    // [_ADJUST] = { ENCODER_CCW_CW(RGB_RMOD, RGB_MOD),  ENCODER_CCW_CW(KC_RIGHT, KC_LEFT) },
 };
 #endif
 
@@ -280,25 +280,25 @@ void write_int_ln(const char* prefix, uint8_t value) {
 static void print_status_narrow(void) {
     oled_write_ln_P(PSTR("SofleChoc _____"), false);
 
-    if (get_highest_layer(layer_state) == _ADJUST) {
-        uint8_t mode  = rgb_matrix_get_mode();
-        HSV     hsv   = rgb_matrix_get_hsv();
-        uint8_t speed = rgb_matrix_get_speed();
+    // if (get_highest_layer(layer_state) == _ADJUST) {
+    //     uint8_t mode  = rgb_matrix_get_mode();
+    //     HSV     hsv   = rgb_matrix_get_hsv();
+    //     uint8_t speed = rgb_matrix_get_speed();
 
-        if (keymap_config.swap_lctl_lgui) {
-            oled_write_ln_P(PSTR("MAC\n"), false);
-        } else {
-            oled_write_ln_P(PSTR("WIN\n"), false);
-        }
+    //     if (keymap_config.swap_lctl_lgui) {
+    //         oled_write_ln_P(PSTR("MAC\n"), false);
+    //     } else {
+    //         oled_write_ln_P(PSTR("WIN\n"), false);
+    //     }
 
-        oled_write_ln("RGB", false);
-        write_int_ln(PSTR("Mo"), mode);
-        write_int_ln(PSTR("H "), hsv.h);
-        write_int_ln(PSTR("S "), hsv.s);
-        write_int_ln(PSTR("V "), hsv.v);
-        write_int_ln(PSTR("Sp"), speed);
-        oled_write_P(PSTR("\n\n\n"), false);
-    } else {
+    //     oled_write_ln("RGB", false);
+    //     write_int_ln(PSTR("Mo"), mode);
+    //     write_int_ln(PSTR("H "), hsv.h);
+    //     write_int_ln(PSTR("S "), hsv.s);
+    //     write_int_ln(PSTR("V "), hsv.v);
+    //     write_int_ln(PSTR("Sp"), speed);
+    //     oled_write_P(PSTR("\n\n\n"), false);
+    // } else {
         oled_write_P(PSTR("\n\n\n\n\n\n\n\n\n"), false);
         led_t led_usb_state = host_keyboard_led_state();
         if (led_usb_state.caps_lock) {
@@ -306,7 +306,7 @@ static void print_status_narrow(void) {
         } else {
             oled_write_ln_P(PSTR("     "), false);
         }
-    }
+    // }
 
     // Print current layer
     switch (get_highest_layer(layer_state)) {
@@ -319,20 +319,20 @@ static void print_status_narrow(void) {
         case _RAISE:
             oled_write_P(PSTR("Sym  "), false);
             break;
-        case _ADJUST:
-            oled_write_P(PSTR("Adj  "), false);
-            break;
+        // case _ADJUST:
+        //     oled_write_P(PSTR("Adj  "), false);
+        //     break;
         default:
             oled_write_P(PSTR("???  "), false);
     }
 }
 
-oled_rotation_t oled_init_user(oled_rotation_t rotation) {
-    if (is_keyboard_master()) {
-        return OLED_ROTATION_270;
-    }
-    return rotation;
-}
+// oled_rotation_t oled_init_user(oled_rotation_t rotation) {
+//     if (is_keyboard_master()) {
+//         return OLED_ROTATION_270;
+//     }
+//     return rotation;
+// }
 
 bool oled_task_user(void) {
     if (is_keyboard_master()) {
