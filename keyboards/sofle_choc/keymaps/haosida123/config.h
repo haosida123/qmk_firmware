@@ -31,7 +31,15 @@
 
 // #define ENCODER_RESOLUTIONS { 4, 4 }
 #define ENCODER_RESOLUTION 4
-#define TAPPING_TOGGLE 2
+// #define TAPPING_TOGGLE 2
+
+#define MK_COMBINED
+
+#define MOUSEKEY_DELAY          0
+#define MOUSEKEY_INTERVAL       16
+#define MOUSEKEY_WHEEL_DELAY    0
+#define MOUSEKEY_MAX_SPEED      6
+#define MOUSEKEY_TIME_TO_MAX    64
 
 // #define RGB_MATRIX_SLEEP     // turn off effects when suspended
 // #define SPLIT_TRANSPORT_MIRROR             // If LED_MATRIX_KEYPRESSES or LED_MATRIX_KEYRELEASES is enabled, you also will want to enable SPLIT_TRANSPORT_MIRROR
