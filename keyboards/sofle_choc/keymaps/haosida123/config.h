@@ -34,12 +34,25 @@
 // #define TAPPING_TOGGLE 2
 
 #define MK_COMBINED
-
-#define MOUSEKEY_DELAY          0
+#define MOUSEKEY_DELAY          16
 #define MOUSEKEY_INTERVAL       16
-#define MOUSEKEY_WHEEL_DELAY    0
-#define MOUSEKEY_MAX_SPEED      6
-#define MOUSEKEY_TIME_TO_MAX    64
+#define MOUSEKEY_MAX_SPEED      4
+// #define MOUSEKEY_MAX_SPEED      6
+#define MOUSEKEY_TIME_TO_MAX    16
+// #define MOUSEKEY_TIME_TO_MAX    32
+
+// #define MOUSEKEY_INERTIA
+// #define MOUSEKEY_FRICTION       24
+// #define MOUSEKEY_DELAY          0
+// #define MOUSEKEY_INTERVAL       16
+// #define MOUSEKEY_MAX_SPEED      24
+// #define MOUSEKEY_TIME_TO_MAX    16
+
+
+#define MOUSEKEY_WHEEL_DELAY    20
+#define MOUSEKEY_WHEEL_INTERVAL 160
+#define MOUSEKEY_WHEEL_TIME_TO_MAX  160
+#define MK_C_INTERVAL_2         16
 
 // #define RGB_MATRIX_SLEEP     // turn off effects when suspended
 // #define SPLIT_TRANSPORT_MIRROR             // If LED_MATRIX_KEYPRESSES or LED_MATRIX_KEYRELEASES is enabled, you also will want to enable SPLIT_TRANSPORT_MIRROR

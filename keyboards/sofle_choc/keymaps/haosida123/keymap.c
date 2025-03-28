@@ -43,32 +43,32 @@ enum custom_keycodes {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_QWERTY] = LAYOUT(
-    KC_GRV,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                       KC_6,     KC_7,     KC_8,    KC_9,    KC_0,    KC_GRV,
+    MO(3),   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                       KC_6,     KC_7,     KC_8,    KC_9,    KC_0,    KC_GRV,
     KC_ESC,   KC_Q,   KC_W,    KC_E,    KC_R,    KC_T,                       KC_Y,     KC_U,     KC_I,    KC_O,    KC_P,    KC_BSPC,
     KC_TAB,   KC_A,   KC_S,    KC_D,    KC_F,    KC_G,                       KC_H,     KC_J,     KC_K,    KC_L,    KC_SCLN, KC_QUOT,
     KC_LSFT,  KC_Z,   KC_X,    KC_C,    KC_V,    KC_B,    KC_MUTE,   KC_MPLY,KC_N,     KC_M,     KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
-                      KC_LGUI, KC_LALT, KC_LCTL, TL_LOWR, KC_ENT,    KC_SPC, TL_UPPR,  KC_RCTL,  KC_RALT, KC_RGUI
+                      MO(2), KC_LALT, KC_LCTL, TL_LOWR, KC_ENT,    KC_SPC, TL_UPPR,  KC_RCTL,  KC_RALT, KC_RGUI
 ),
 [_LOWER] = LAYOUT(
-    _______, _______, _______, _______, _______,  _______,                         _______, _______,   _______, _______,   _______,  _______,
-    _______, KC_INS,  KC_PSCR, KC_APP,  XXXXXXX,  XXXXXXX,                         KC_PGUP, KC_PRVWD,  KC_UP,   KC_NXTWD,  KC_DLINE, KC_BSPC,
-    _______, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX,  KC_CAPS,                         KC_PGDN, KC_LEFT,   KC_DOWN, KC_RGHT,   KC_DEL,   KC_BSPC,
-    _______, KC_UNDO, KC_CUT,  KC_COPY, KC_PASTE, XXXXXXX, _______,       _______, XXXXXXX, KC_LSTRT,  XXXXXXX, KC_LEND,   XXXXXXX,  _______,
-                      _______, _______, _______,  _______, _______,       _______, _______,  _______,   _______, _______
+    KC_GRV, KC_0, KC_9, KC_8, KC_7,  KC_6,                         _______, _______,   _______, _______,   _______,  _______,
+    KC_BSPC, KC_P, KC_O, KC_I, KC_U, KC_Y,                         S(KC_6), S(KC_7),  S(KC_8),   S(KC_9),  S(KC_0), KC_GRV,
+    KC_QUOT, KC_SCLN, KC_L, KC_K, KC_J, KC_H,                         KC_BSPC, KC_MINS,   KC_EQL, KC_LBRC,   KC_RBRC,   KC_BSLS,
+    KC_RSFT, KC_SLSH, KC_DOT, KC_COMM, KC_M, KC_N, _______,       _______, S(KC_1), S(KC_2),  S(KC_3), S(KC_4),   S(KC_5),  S(KC_GRV),
+                      KC_RGUI, KC_RALT, KC_RCTL,  _______, KC_SPC,       _______, _______,  _______,   _______, _______
 ),
 [_RAISE] = LAYOUT(
-    _______, KC_F1,   KC_F2,  KC_F3,   KC_F4,   KC_F5,                           KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
-    KC_GRV,  KC_1,    KC_2,   KC_3,    KC_4,    KC_5,                            KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_F12,
-    _______, KC_EXLM, KC_AT,  KC_HASH, KC_DLR,  KC_PERC,                         KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_PIPE,
-    _______, KC_EQL, KC_MINS, KC_PLUS, KC_LCBR, KC_RCBR, _______,       _______, KC_LBRC, KC_RBRC, KC_SCLN, KC_COLN, KC_BSLS, _______,
-                     _______, _______, _______, _______,  _______,       _______, _______, _______, _______, _______
+    _______, G(KC_1), G(KC_2),   G(KC_3),  G(KC_4),   _______,                            KC_NO,   KC_NUM_LOCK,   KC_NO,   KC_NO,   KC_PSLS,  TO(0),
+    KC_WWW_BACK, KC_INS, KC_APPLICATION, KC_HOME, KC_PAUS, KC_PGUP,                       S(KC_BSLS),    KC_P7,    KC_P8,    KC_P9,    KC_PAST,    KC_BSPC,
+    KC_WWW_FORWARD, KC_DEL, KC_PSCR, KC_END, KC_UP, KC_PGDN,                         KC_BSPC, KC_P4, KC_P5, KC_P6, KC_PMNS, KC_NO,
+    _______, C(KC_SLSH), KC_F5, KC_LEFT, KC_DOWN, KC_RGHT, _______,       _______, KC_NO, KC_P1, KC_P2, KC_P3, KC_PPLS, _______,
+                     _______, _______, _______, _______,  KC_ESC,       _______, _______, KC_P0, KC_PDOT, KC_PENT
 ),
 [_ADJUST] = LAYOUT(
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    QK_BOOT, RGB_SPI, RGB_VAI, RGB_SAI, RGB_HUI, RGB_MODE_FORWARD,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    XXXXXXX, RGB_SPD, RGB_VAD, RGB_SAD, RGB_HUD, RGB_MODE_REVERSE,                       XXXXXXX, KC_VOLD, KC_MUTE, KC_VOLU, XXXXXXX, XXXXXXX,
-    CG_TOGG, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     XXXXXXX, XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX, XXXXXXX,
-                      _______, _______, _______, _______, _______,     _______, _______, _______, _______, _______
+    KC_TRNS, KC_F1, KC_F2, KC_F3, KC_F4, A(KC_F4),                       KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, TO(0),
+    KC_F5, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10,                       XXXXXXX, XXXXXXX, KC_MS_UP, XXXXXXX, XXXXXXX, KC_TRNS,
+    KC_CAPS, KC_F11, KC_F12, KC_MS_ACCEL0, KC_MS_ACCEL1, KC_MS_ACCEL2,                       XXXXXXX, KC_MS_LEFT, KC_MS_DOWN, KC_MS_RIGHT, KC_MS_BTN1, KC_MS_BTN2,
+    KC_TRNS, KC_MINS, KC_EQL, KC_LBRC, KC_RBRC, KC_BSLS, _______,     _______, KC_MS_WH_LEFT, KC_MS_WH_DOWN, KC_MS_WH_UP, KC_MS_WH_RIGHT, KC_MS_BTN3, KC_TRNS,
+                      KC_MS_BTN3, _______, _______, _______, _______,     _______, _______, _______, _______, _______
 )
 };
 
