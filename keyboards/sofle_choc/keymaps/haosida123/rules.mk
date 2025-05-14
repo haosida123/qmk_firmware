@@ -15,6 +15,9 @@ RGB_MATRIX_ENABLE = no
 CONSOLE_ENABLE = no
 COMMAND_ENABLE = no
 
+NKRO_ENABLE = no
+SLEEP_LED_ENABLE = no
+
 # Enable audio keys and system control
 EXTRAKEY_ENABLE = yes
 MOUSEKEY_ENABLE = yes
